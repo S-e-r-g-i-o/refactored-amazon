@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Counters' Revenge
 // @namespace    http://tampermonkey.net/
-// @version      0.1       02/02/2021 11:31PM
+// @version      0.2       02/02/2021 11:31PM
 // @author       S-e-r-g-i-o
 // @match https://aftlite-portal.amazon.com/bcc/enter-asin
 // @match https://aftlite-na.amazon.com/bcc/enter-asin
