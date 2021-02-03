@@ -1,12 +1,10 @@
 // ==UserScript==
 // @name         Counters' Revenge
 // @namespace    http://tampermonkey.net/
-// @version      0.1       02/02/2021 12:00PM
-// @description 
+// @version      0.1       02/02/2021 16:07PM
 // @author       S-e-r-g-i-o
 // @match https://aftlite-portal.amazon.com/bcc/enter-asin
 // @match https://aftlite-na.amazon.com/bcc/enter-asin
-// @grant        none
 // ==/UserScript==
 
 (function() {
@@ -37,10 +35,24 @@
     //controls which asin to output
     for (var y = 0; y < asinArray.length; y++ ) {
 
+
         // controls qty of asinArray[y] ASIN
         for (var x = 0; x < quantityArray[x]; x++) {
 
-            // site response/load delay
+            let request = new XMLHttpRequest();
+            request.open("POST", asinArray[y], true);
+            request.responseType = "document";
+
+            let formData = new FormData(dateForm);
+
+            request.onreadystatechange = function() {
+    
+                let functions = getFunctions(this.responseXML);
+                let times = this.responseXML.querySelectorAll("b");  
+        }              
+                
+    }
+/*            // site response/load delay
             setTimeout(function(){
                 document.getElementById('asin').value = asinArray[y];
                 document.querySelector("input[type='submit']").click();
@@ -49,5 +61,6 @@
 
         }
     }
-return;
+*/    
+
 })();
