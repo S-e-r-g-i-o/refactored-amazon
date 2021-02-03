@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Counters' Revenge
 // @namespace    http://tampermonkey.net/
-// @version      0.1       02/02/2021 16:07PM
+// @version      0.1       02/02/2021 11:31PM
 // @author       S-e-r-g-i-o
 // @match https://aftlite-portal.amazon.com/bcc/enter-asin
 // @match https://aftlite-na.amazon.com/bcc/enter-asin
+// @downloadURL https://github.com/S-e-r-g-i-o/refactored-broccoli/blob/master/Counters'%20Revenge.js
 // ==/UserScript==
 
 (function() {
