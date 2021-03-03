@@ -66,15 +66,13 @@
         }
     }
 */
-    //GM_getValue
+    //let asinData[] = GM_getValue("asinArray");
+    
  //    GM_deleteValue("asinArray");
+ //    GM_deleteValue("quantityArray");
 
 
     JSON.Parse(GM_setValue("asinArray",asinArray));
     JSON.Parse(GM_setValue("quantityArray",quantityArray));
-
-
-
-    //  var quantityData = JSON.Parse(GM_setValue(quantityArray,"quantityArray") || "[]");
 
 })();
