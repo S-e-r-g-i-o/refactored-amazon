@@ -3,6 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  Automatically logs user in. Add username before @amazon.com If password isn't 123456, put in correct password.
+// @downloadURL https://github.com/S-e-r-g-i-o/refactored-broccoli/edit/master/AutoLogin.user.js
 // @author       S-E-R-G-I-O@
 // @match        https://aftlite-portal.amazon.com/ap*
 // @icon         https://www.google.com/s2/favicons?domain=amazon.com
