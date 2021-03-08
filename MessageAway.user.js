@@ -3,6 +3,7 @@
 // @namespace    https://github.com/S-e-r-g-i-o/refactored-broccoli
 // @version      1.0
 // @description  Automatically types in Y;
+// @downloadURL  https://github.com/S-e-r-g-i-o/refactored-broccoli/edit/master/MessageAway.user.js
 // @author       S-E-R-G-I-O@
 // @match        https://aftlite-na.amazon.com/user-message/acknowledge-message*
 // @match        https://aftlite-portal.amazon.com/user-message/acknowledge-message*
