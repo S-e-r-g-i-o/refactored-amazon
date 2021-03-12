@@ -20,14 +20,22 @@
 
     if(storedXTest!= null && storedXTest >= asinQuantityTest){
         deleteValues();
+
     }
     var runPrompt = GM_getValue("runPrompt");
     var ASIN;
     var asinQuantity;
     if(runPrompt == true || runPrompt == null){
+        ASIN = prompt( "Please enter ASIN. To stop script type 'x'");
+        if(ASIN == "x"){
+            return;}
+        var runQuantity = true;
+        while(runQuantity == true){
+            asinQuantity = prompt("Please enter the quantity of ASIN " + ASIN);
+            if(asinQuantity == NaN){
+            } else{runQuantity = false;}
+        }
 
-        ASIN = prompt( "Please enter ASIN");
-        asinQuantity = prompt("Please enter the quantity of ASIN " + ASIN);
         GM_setValue("ASIN",ASIN);
         GM_setValue("asinQuantity", asinQuantity);
         console.log("runPrompt set to false, values set for ASIN and asinQuantity and runPrompt");
