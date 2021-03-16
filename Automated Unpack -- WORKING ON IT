@@ -1,0 +1,94 @@
+// ==UserScript==
+// @name        Automated Unpack
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        https://aftlite-portal.amazon.com/unpack_tote*
+// @match        https://aftlite-portal.amazon.com/view_tote*
+// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @grant        GM.getValue
+// @grant        GM.setValue
+// @grant        GM.deleteValue
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    var sp00Array = [];
+    var input = false;
+    var counter = 0;
+    var whichWindow = window.location.pathname;
+    console.log("whatwindow " + whichWindow);
+
+    switch(whichWindow){
+
+        case ("/unpack_tote"): //SP00 req. page
+            getToteCodes();
+            spInput();
+            break;
+
+        case("/unpack_tote/scan_item"): // ASIN req. page
+            alert(whichWindow)
+            window.open("https://aftlite-portal.amazon.com/view_tote");
+            break;
+
+        case("/unpack_tote/scan_location"):
+            alert(whichWindow)
+            break;
+
+        case("/unpack_tote/validate_tote"):
+            alert("Please clear Cache and cookies " + whichWindow);
+            break;
+        case("/view_tote"):
+            document.getElementById('id').value('SPOO');
+        // document.querySelector("input[type='submit']").click();
+
+            break;
+        case("/view_tote/view_assignment"):
+            break;
+    }
+
+    function spInput(){
+        document.getElementById("formInput").value = "SpOCBGG1793QI3J28758";
+
+        // document.querySelector("input[type='submit']").click();
+    }
+    function setDestinationLocation(destinationLocation){
+        destinationLocation = prompt("Please enter destination location.");
+        GM.setValue("destinationLocation", destinationLocation);
+    }
+
+    function getASINS(){
+        var ASINS = [];
+        var xhr = new XMLHttpRequest;
+    }
+    function getToteCodes(){
+        while(input == false){
+            let promptInput = prompt("Please enter the next SP00, enter x if last ");
+            if(promptInput == "x"){
+                GM.setValue("sp00Array",sp00Array);
+                input = true;
+            }else{
+                sp00Array[counter]= (promptInput);
+                console.log(sp00Array[counter]);
+                counter++;
+            }
+        }
+    }
+})();
+/*
+
+If setdestinationlocation == true
+Prompt for destination location
+
+When prompting for sp00,  "Type ?? to change destinatiob location")
+If "sp00" == x then
+setDestinationLocation = true)
+
+Post xhr of sp00 to /view_tote
+
+Run for loop to get values off html table
+(Asins)
+(Qty)
+*/
