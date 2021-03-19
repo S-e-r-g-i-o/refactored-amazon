@@ -42,10 +42,15 @@
             break;
         case("/view_tote"):
             document.getElementById('id').value('SPOO');
-        // document.querySelector("input[type='submit']").click();
+            // document.querySelector("input[type='submit']").click();
 
             break;
         case("/view_tote/view_assignment"):
+            var table = document.getElementByClassName('a-bordered a-horizontal-stripes')[0].children[1];
+            GM.setValue('table', table);
+            console.table();
+            table = JSON.stringify(table);
+            GM.setValue('table2', table);
             break;
     }
 
@@ -60,8 +65,39 @@
     }
 
     function getASINS(){
+        var oTable = document.getElementsByClassName('a-bordered a-horizontal-stripes')[0];
         var ASINS = [];
-        var xhr = new XMLHttpRequest;
+        var asinQty = [];
+        var rowLength = oTable.rows.length;
+        var x = 0;
+        var xx = 0;
+        //loops through rows, i = 1 because first row , 0 , is the Titles row. ASIN .. QTY..
+        for (var i = 1; i < rowLength; i++){
+
+            //gets cells of current row
+            var oCells = oTable.rows.item(i).cells;
+            //gets amount of cells of current row
+            var cellLength = oCells.length;
+            //loops through each cell in current row
+            for(var j = 0; j < cellLength; j++){
+                /* get your cell info here */
+                var cellVal = oCells.item(j).innerHTML;
+                var asin = 8;
+                switch(j){
+                    case(1):
+                        ASINS[x]=cellVal;
+                        x++;
+                        break;
+                    case(3):
+                        asinQty[xx] = cellVal;
+                        xx++
+                        break;
+                }
+
+            }
+        }
+        GM.setValue('ASINS',ASINS);
+        GM.setValue('asinQty',asinQty);
     }
     function getToteCodes(){
         while(input == false){
